@@ -10,7 +10,7 @@ body, html {
   color: #ffffff;
 }
 
-/* Particles background covers entire screen */
+/* Particles background */
 #tsparticles {
   position: fixed;
   top: 0;
@@ -38,32 +38,36 @@ body, html {
   letter-spacing: 1px;
 }
 
-/* Contact Buttons - Updated */
+/* Buttons - Fixed for mobile and readability */
 .contact-buttons {
   display: flex;
+  flex-wrap: nowrap; /* keep in one row */
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  align-items: center;
+  gap: 15px;
+  overflow-x: auto; /* horizontal scroll if necessary */
+  padding: 10px 0;
 }
 
 .contact-buttons a {
-  padding: 1rem 2rem;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  background: #ffeb3b; /* Yellow */
-  color: #000000; /* Black text */
-  font-weight: bold;
-  border: 2px solid #000000;
-  transition: transform 0.3s, background 0.3s, color 0.3s;
+  flex: 0 0 auto;
+  white-space: nowrap; /* prevent text wrapping */
   text-align: center;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  background: #ffeb3b; /* yellow background */
+  color: #000; /* black text */
+  font-weight: bold;
+  border: 2px solid #000;
+  transition: transform 0.3s, background 0.3s, color 0.3s;
 }
 
 .contact-buttons a:hover {
   transform: scale(1.05);
-  background: #fdd835; /* Slightly darker yellow */
-  color: #000000;
+  background: #fdd835;
   text-decoration: none;
+  color: #000;
 }
 
 /* Sections */
@@ -93,14 +97,14 @@ body, html {
 
 /* About Section */
 .about p {
-  font-size: 1.5rem;
-  line-height: 1.9;
+  font-size: 1.4rem;
+  line-height: 1.8;
   text-align: justify;
   margin-top: 20px;
 }
 
 .about p::first-letter {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #00ffff;
 }
@@ -203,6 +207,34 @@ body, html {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Testimonials Section */
+.testimonials-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.testimonial-card {
+  background: #111;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 700px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+}
+
+.testimonial-quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial-author {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: right;
+}
+
 /* Contact Section */
 .contact {
   text-align: center;
@@ -239,7 +271,11 @@ body, html {
   .header h1 { font-size: 3rem; }
   .header .sub-title { font-size: 1.3rem; }
   .project-card { width: 90%; }
-  .contact-buttons a { font-size: 1.2rem; padding: 0.9rem 1.5rem; }
-  .about p { font-size: 1.3rem; }
-  .skill { font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  .contact-buttons a {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
   }
