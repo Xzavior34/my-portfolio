@@ -46,9 +46,9 @@ const ProjectCard = ({ project, delay }) => (
   </div>
 );
 
-// Testimonials Card
-const TestimonialCard = ({ testimonial }) => (
-  <div className="testimonial-card">
+// Testimonial Card with fade-in animation
+const TestimonialCard = ({ testimonial, delay }) => (
+  <div className="testimonial-card" style={{ animationDelay: `${delay}s` }}>
     <p className="testimonial-quote">“{testimonial.quote}”</p>
     <p className="testimonial-author">— {testimonial.author}</p>
   </div>
@@ -72,7 +72,8 @@ function App() {
 
   const [testimonials] = useState([
     { quote: "Philip delivered a stunning web platform for our foundation. Reliable, fast, and truly creative.", author: "Sara Foundation" },
-    { quote: "He's not just a developer—he's a strategist. Our online store grew rapidly after his revamp.", author: "Regamos Foundation" }
+    { quote: "He's not just a developer—he's a strategist. Our online store grew rapidly after his revamp.", author: "Regamos Foundation" },
+    { quote: "Philip combines technical skill and creativity to deliver professional results that exceed expectations.", author: "Jane Doe, Project Manager" },
   ]);
 
   const particlesInit = async (main) => {
@@ -114,10 +115,10 @@ function App() {
       <section className="section about">
         <h2>About Me</h2>
         <p>
-          I'm Philip Inem, a passionate full-stack developer and digital strategist. I specialize in building impactful web applications with clean, efficient code and thoughtful UI/UX design. My experience extends beyond coding to include social media growth, digital marketing strategies, and graphic design.
+          I'm Philip Inem, a passionate full-stack developer and digital strategist. I specialize in building impactful web applications with clean, efficient code and thoughtful UI/UX design. My experience extends beyond coding to social media growth, digital marketing strategies, and graphic design.
         </p>
         <p>
-          I have successfully collaborated with foundations and brands such as <b>Regamos Foundation</b> and <b>Sara Foundation</b>, helping them enhance their online presence and grow engagement by hundreds of followers weekly. I'm continually upskilling through real-world software engineering projects and virtual experience programs to ensure I deliver solutions that are both innovative and professional.
+          I've successfully collaborated with organizations such as <b>Regamos Foundation</b> and <b>Sara Foundation</b>, helping them enhance their digital presence and grow engagement by hundreds of followers weekly. I continually upskill through real-world projects to ensure I deliver innovative and professional solutions.
         </p>
       </section>
 
@@ -141,7 +142,7 @@ function App() {
       <section className="section testimonials">
         <h2>Testimonials</h2>
         <div className="testimonials-container">
-          {testimonials.map((t, i) => <TestimonialCard key={i} testimonial={t} />)}
+          {testimonials.map((t, i) => <TestimonialCard key={i} testimonial={t} delay={i * 0.3} />)}
         </div>
       </section>
 
