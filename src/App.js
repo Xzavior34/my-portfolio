@@ -19,20 +19,18 @@ const TypingEffect = ({ text, speed = 120 }) => {
 };
 
 // Skill Bar Component with percentage
-const SkillBar = ({ skill, index }) => {
-  return (
-    <div className="skill">
-      <span>{skill.name}</span>
-      <div className="skill-bar">
-        <div
-          className="skill-progress"
-          style={{ width: `${skill.level}%`, animationDelay: `${index * 0.2}s` }}
-        ></div>
-        <span className="skill-percent">{skill.level}%</span>
-      </div>
+const SkillBar = ({ skill, index }) => (
+  <div className="skill">
+    <span>{skill.name}</span>
+    <div className="skill-bar">
+      <div
+        className="skill-progress"
+        style={{ width: `${skill.level}%`, animationDelay: `${index * 0.2}s` }}
+      ></div>
+      <span className="skill-percent">{skill.level}%</span>
     </div>
-  );
-};
+  </div>
+);
 
 // Project Card
 const ProjectCard = ({ project, delay }) => (
@@ -41,8 +39,18 @@ const ProjectCard = ({ project, delay }) => (
     <div className="project-info">
       <h3>{project.title}</h3>
       <p>{project.desc}</p>
-      <a href={project.link} className="btn btn-primary" target="_blank" rel="noreferrer">View Project</a>
+      <a href={project.link} className="btn btn-primary" target="_blank" rel="noreferrer">
+        View Project
+      </a>
     </div>
+  </div>
+);
+
+// Testimonials Card
+const TestimonialCard = ({ testimonial }) => (
+  <div className="testimonial-card">
+    <p className="testimonial-quote">“{testimonial.quote}”</p>
+    <p className="testimonial-author">— {testimonial.author}</p>
   </div>
 );
 
@@ -60,6 +68,11 @@ function App() {
     { title: "Mini Jumia", desc: "E-commerce store with Firebase login, cart, and admin dashboard.", img: "https://source.unsplash.com/400x200/?ecommerce", link: "#" },
     { title: "Weather App", desc: "Real-time weather data with clean UI.", img: "https://source.unsplash.com/400x200/?weather", link: "#" },
     { title: "Xzavior Chess", desc: "Online chess with AI and mobile support.", img: "https://source.unsplash.com/400x200/?chess", link: "#" },
+  ]);
+
+  const [testimonials] = useState([
+    { quote: "Philip delivered a stunning web platform for our foundation. Reliable, fast, and truly creative.", author: "Sara Foundation" },
+    { quote: "He's not just a developer—he's a strategist. Our online store grew rapidly after his revamp.", author: "Regamos Foundation" }
   ]);
 
   const particlesInit = async (main) => {
@@ -91,16 +104,21 @@ function App() {
         <h1><TypingEffect text="Philip Inem" /></h1>
         <p className="sub-title">Full-Stack Developer | UI/UX Designer | Social Media Growth Strategist</p>
         <div className="contact-buttons">
-          <a href="mailto:philipinem7@gmail.com" className="btn btn-light">Email Me</a>
-          <a href="https://github.com/Xzavior34" target="_blank" rel="noreferrer" className="btn btn-outline-light">GitHub</a>
-          <a href="/Philip_Inem_CV_Summary.pdf" target="_blank" rel="noreferrer" className="btn btn-warning">Download CV</a>
+          <a href="mailto:philipinem7@gmail.com" className="btn btn-light btn-lg">Email Me</a>
+          <a href="https://github.com/Xzavior34" target="_blank" rel="noreferrer" className="btn btn-outline-light btn-lg">GitHub</a>
+          <a href="/Philip_Inem_CV_Summary.pdf" target="_blank" rel="noreferrer" className="btn btn-warning btn-lg">Download CV</a>
         </div>
       </header>
 
       {/* About */}
       <section className="section about">
         <h2>About Me</h2>
-        <p>I'm a passionate full-stack developer and digital strategist building impactful web apps with clean code and thoughtful design. Also skilled in social media growth and digital campaigns.</p>
+        <p>
+          I'm Philip Inem, a passionate full-stack developer and digital strategist. I specialize in building impactful web applications with clean, efficient code and thoughtful UI/UX design. My experience extends beyond coding to include social media growth, digital marketing strategies, and graphic design.
+        </p>
+        <p>
+          I have successfully collaborated with foundations and brands such as <b>Regamos Foundation</b> and <b>Sara Foundation</b>, helping them enhance their online presence and grow engagement by hundreds of followers weekly. I'm continually upskilling through real-world software engineering projects and virtual experience programs to ensure I deliver solutions that are both innovative and professional.
+        </p>
       </section>
 
       {/* Skills */}
@@ -116,6 +134,14 @@ function App() {
         <h2>Highlighted Projects</h2>
         <div className="projects-container">
           {projects.map((p, i) => <ProjectCard key={i} project={p} delay={i * 0.3} />)}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section testimonials">
+        <h2>Testimonials</h2>
+        <div className="testimonials-container">
+          {testimonials.map((t, i) => <TestimonialCard key={i} testimonial={t} />)}
         </div>
       </section>
 
