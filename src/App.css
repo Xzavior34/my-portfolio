@@ -38,16 +38,31 @@ body, html {
   letter-spacing: 1px;
 }
 
+/* Contact Buttons - Updated */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
 .contact-buttons a {
-  margin: 0 10px;
-  padding: 1rem 2.2rem;
-  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
   border-radius: 10px;
-  transition: transform 0.3s, background 0.3s;
+  background: #ffeb3b; /* Yellow */
+  color: #000000; /* Black text */
+  font-weight: bold;
+  border: 2px solid #000000;
+  transition: transform 0.3s, background 0.3s, color 0.3s;
+  text-align: center;
 }
 
 .contact-buttons a:hover {
   transform: scale(1.05);
+  background: #fdd835; /* Slightly darker yellow */
+  color: #000000;
   text-decoration: none;
 }
 
@@ -78,14 +93,14 @@ body, html {
 
 /* About Section */
 .about p {
-  font-size: 1.4rem;
-  line-height: 1.8;
+  font-size: 1.5rem;
+  line-height: 1.9;
   text-align: justify;
   margin-top: 20px;
 }
 
 .about p::first-letter {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   color: #00ffff;
 }
@@ -177,52 +192,15 @@ body, html {
 
 .project-info .btn {
   width: 100%;
-  padding: 1rem 0;
-  font-size: 1.1rem;
+  padding: 0.8rem 0;
+  font-size: 1rem;
   font-weight: bold;
-  border-radius: 8px;
 }
 
 /* Animation for projects */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* Testimonials Section */
-.testimonials-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 40px;
-}
-
-.testimonial-card {
-  background: #111;
-  padding: 25px;
-  border-radius: 12px;
-  width: 300px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
-.testimonial-quote {
-  font-size: 1.1rem;
-  font-style: italic;
-  margin-bottom: 15px;
-}
-
-.testimonial-author {
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: right;
-  color: #00ffff;
 }
 
 /* Contact Section */
@@ -260,6 +238,8 @@ body, html {
 @media (max-width: 768px) {
   .header h1 { font-size: 3rem; }
   .header .sub-title { font-size: 1.3rem; }
-  .project-card, .testimonial-card { width: 90%; }
-  .contact-buttons a { width: 80%; margin-bottom: 10px; }
+  .project-card { width: 90%; }
+  .contact-buttons a { font-size: 1.2rem; padding: 0.9rem 1.5rem; }
+  .about p { font-size: 1.3rem; }
+  .skill { font-size: 1.1rem; }
   }
