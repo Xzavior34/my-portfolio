@@ -25,7 +25,7 @@ const SkillBar = ({ skill, index }) => (
     <div className="skill-bar">
       <div
         className="skill-progress"
-        style={{ width: `${skill.level}%`, animationDelay: `${index * 0.2}s` }}
+        style={{ width: `${skill.level}%`, animationDelay: `${index * 0.3}s` }}
       ></div>
       <span className="skill-percent">{skill.level}%</span>
     </div>
@@ -56,7 +56,7 @@ const TestimonialCard = ({ testimonial, delay }) => (
 
 function App() {
   const [skills] = useState([
-    { name: "HTML5, CSS3, JavaScript", level: 95 },
+    { name: "HTML, CSS, JavaScript", level: 95 },
     { name: "React.js & Hooks", level: 90 },
     { name: "Firebase (Auth & Firestore)", level: 85 },
     { name: "Bootstrap & Tailwind", level: 90 },
@@ -134,7 +134,7 @@ function App() {
       <section className="section projects">
         <h2>Highlighted Projects</h2>
         <div className="projects-container">
-          {projects.map((p, i) => <ProjectCard key={i} project={p} delay={i * 0.3} />)}
+          {projects.map((p, i) => <ProjectCard key={i} project={p} delay={i * 0.8} />)}
         </div>
       </section>
 
