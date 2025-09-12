@@ -1,281 +1,133 @@
-/* App.css */
-
-/* General Reset */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset and smooth scrolling */
+html {
   scroll-behavior: smooth;
-  background: #000428;
-  color: #ffffff;
 }
 
-/* Particles background */
-#tsparticles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+/* General body styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f0f0f;
+  color: #fff;
 }
 
-/* Header */
+/* Header / Hero */
 .header {
   text-align: center;
-  padding: 120px 20px 80px 20px;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(90deg, #000428, #004e92);
+  min-height: 100vh;
 }
 
 .header h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  font-weight: 900;
+  font-size: 3rem;
+  margin: 0;
 }
 
-.header .sub-title {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-}
-
-/* Buttons - Fixed for mobile and readability */
-.contact-buttons {
-  display: flex;
-  flex-wrap: nowrap; /* keep in one row */
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  overflow-x: auto; /* horizontal scroll if necessary */
-  padding: 10px 0;
+.sub-title {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #ccc;
 }
 
 .contact-buttons a {
-  flex: 0 0 auto;
-  white-space: nowrap; /* prevent text wrapping */
-  text-align: center;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  background: #ffeb3b; /* yellow background */
-  color: #000; /* black text */
-  font-weight: bold;
-  border: 2px solid #000;
-  transition: transform 1.5s, background 1.5s, color 1.5s;
-}
-
-.contact-buttons a:hover {
-  transform: scale(1.05);
-  background: #fdd835;
-  text-decoration: none;
-  color: #000;
+  margin: 0.5rem;
 }
 
 /* Sections */
 .section {
+  padding: 4rem 2rem;
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 80px 20px;
+  margin: auto;
 }
 
 .section h2 {
-  font-size: 2.8rem;
-  color: #00ffff;
-  margin-bottom: 30px;
-  text-align: center;
-  position: relative;
-}
-
-.section h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #00ffff;
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-
-/* About Section */
-.about p {
-  font-size: 1.4rem;
-  line-height: 1.8;
-  text-align: justify;
-  margin-top: 20px;
-}
-
-.about p::first-letter {
   font-size: 2rem;
-  font-weight: bold;
-  color: #00ffff;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-/* Skills Section */
+/* Skills */
 .skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  display: grid;
+  gap: 1rem;
 }
 
 .skill {
-  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .skill-bar {
-  background: rgba(255,255,255,0.1);
-  border-radius: 20px;
+  background: #333;
+  border-radius: 5px;
   overflow: hidden;
-  height: 25px;
-  margin-top: 5px;
   position: relative;
 }
 
 .skill-progress {
-  background: linear-gradient(90deg, #00ffff, #004e92);
-  height: 100%;
+  background: #00bfff;
+  height: 1rem;
   width: 0;
-  border-radius: 20px;
-  animation: fill 3s forwards;
-}
-
-@keyframes fill {
-  from { width: 0%; }
-  to { width: var(--width); }
+  animation: loadSkill 1s forwards;
 }
 
 .skill-percent {
   position: absolute;
-  right: 10px;
-  top: 2px;
-  font-weight: bold;
-  color: #ffffff;
+  right: 0.5rem;
+  top: 0;
+  font-size: 0.8rem;
+  color: #fff;
 }
 
-/* Projects Section */
+@keyframes loadSkill {
+  to { width: var(--skill-width); }
+}
+
+/* Projects */
 .projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .project-card {
   background: #111;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  width: 300px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: fadeUp 0.8s ease forwards;
-  opacity: 0;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
 }
 
 .project-card img {
   width: 100%;
-  height: 180px;
+  height: 150px;
   object-fit: cover;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 35px rgba(0,0,0,0.7);
-}
-
 .project-info {
-  padding: 15px;
+  padding: 1rem;
 }
 
-.project-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.project-info p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-.project-info .btn {
-  width: 100%;
-  padding: 0.8rem 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-/* Animation for projects */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Testimonials Section */
+/* Testimonials */
 .testimonials-container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .testimonial-card {
   background: #111;
+  padding: 1rem;
   border-radius: 10px;
-  padding: 20px;
-  max-width: 700px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-}
-
-.testimonial-quote {
-  font-size: 1.2rem;
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.testimonial-author {
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: right;
-}
-
-/* Contact Section */
-.contact {
-  text-align: center;
-}
-
-.contact p {
-  font-size: 1.2rem;
-  margin: 10px 0;
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 40px 20px;
-  background: #111;
-  font-size: 1rem;
-  color: #888;
+  padding: 2rem;
+  background: #000428;
+  color: #fff;
 }
-
-/* Typing effect */
-.typing {
-  border-right: 3px solid #00ffff;
-  padding-right: 3px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { border-color: #00ffff; }
-  50% { border-color: transparent; }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .header h1 { font-size: 3rem; }
-  .header .sub-title { font-size: 1.3rem; }
-  .project-card { width: 90%; }
-}
-
-@media (max-width: 480px) {
-  .contact-buttons a {
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
-  }
-  }
