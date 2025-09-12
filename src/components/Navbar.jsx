@@ -6,47 +6,80 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) setScrolled(true);
-      else setScrolled(false);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Smooth scroll handler
+  const handleLinkClick = (e, targetId) => {
+    e.preventDefault();
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+    setOpen(false); // close mobile menu after click
+  };
+
   return (
     <nav
-      className={`fixed w-full z-50 top-0 transition-colors ${
-        scrolled ? "bg-white shadow-md" : "bg-transparent"
+      className={`fixed w-full z-50 top-0 transition-all duration-500 ${
+        scrolled
+          ? "bg-blue-900/90 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4 md:px-8">
-        <div className="text-2xl font-bold text-blue-700">Philip Inem</div>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex space-x-6">
-          <a href="#hero" className="hover:text-blue-500 transition">Home</a>
-          <a href="#about" className="hover:text-blue-500 transition">About</a>
-          <a href="#projects" className="hover:text-blue-500 transition">Projects</a>
-          <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
+        {/* Logo / Name */}
+        <div className="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">
+          Philip Inem
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Desktop Links */}
+        <div className="hidden md:flex space-x-8 text-white font-medium">
+          <a href="#hero" onClick={(e) => handleLinkClick(e, "#hero")}>
+            Home
+          </a>
+          <a href="#about" onClick={(e) => handleLinkClick(e, "#about")}>
+            About
+          </a>
+          <a href="#projects" onClick={(e) => handleLinkClick(e, "#projects")}>
+            Projects
+          </a>
+          <a href="#contact" onClick={(e) => handleLinkClick(e, "#contact")}>
+            Contact
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setOpen(!open)} className="focus:outline-none">
-            <span className="text-2xl">{open ? "✖" : "☰"}</span>
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-white text-3xl focus:outline-none"
+          >
+            {open ? "✖" : "☰"}
           </button>
         </div>
       </div>
 
       {/* Mobile Links */}
       {open && (
-        <div className="md:hidden bg-white shadow-md flex flex-col items-center space-y-4 py-4">
-          <a href="#hero" onClick={() => setOpen(false)}>Home</a>
-          <a href="#about" onClick={() => setOpen(false)}>About</a>
-          <a href="#projects" onClick={() => setOpen(false)}>Projects</a>
-          <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
+        <div className="md:hidden bg-blue-900/95 backdrop-blur-md shadow-lg flex flex-col items-center space-y-6 py-6 text-white font-medium">
+          <a href="#hero" onClick={(e) => handleLinkClick(e, "#hero")}>
+            Home
+          </a>
+          <a href="#about" onClick={(e) => handleLinkClick(e, "#about")}>
+            About
+          </a>
+          <a href="#projects" onClick={(e) => handleLinkClick(e, "#projects")}>
+            Projects
+          </a>
+          <a href="#contact" onClick={(e) => handleLinkClick(e, "#contact")}>
+            Contact
+          </a>
         </div>
       )}
     </nav>
   );
-}
+      }
