@@ -60,7 +60,7 @@ body, html {
   color: #000; /* black text */
   font-weight: bold;
   border: 2px solid #000;
-  transition: transform 0.8s, background 0.8s, color 0.8s;
+  transition: transform 1.5s, background 1.5s, color 1.5s;
 }
 
 .contact-buttons a:hover {
@@ -134,7 +134,7 @@ body, html {
   height: 100%;
   width: 0;
   border-radius: 20px;
-  animation: fill 1.5s forwards;
+  animation: fill 3s forwards;
 }
 
 @keyframes fill {
@@ -258,7 +258,7 @@ body, html {
 .typing {
   border-right: 3px solid #00ffff;
   padding-right: 3px;
-  animation: blink 0.7s infinite;
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
