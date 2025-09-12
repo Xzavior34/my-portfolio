@@ -1,10 +1,22 @@
-
+/* Enable smooth scrolling */
 html {
   scroll-behavior: smooth;
-}@tailwind base;
+}
+
+/* Tailwind Directives */
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Global body styling */
 body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: code font */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
