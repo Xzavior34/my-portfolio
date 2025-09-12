@@ -107,7 +107,7 @@ function App() {
         <div className="contact-buttons">
           <a href="mailto:philipinem7@gmail.com" className="btn btn-light btn-lg">Email Me</a>
           <a href="https://github.com/Xzavior34" target="_blank" rel="noreferrer" className="btn btn-outline-light btn-lg">GitHub</a>
-          <a href="/Philip_Inem_CV_Summary.pdf" target="_blank" rel="noreferrer" className="btn btn-warning btn-lg">Download CV</a>
+          <a href="Philip_Inem_CV_Summary.pdf" target="_blank" rel="noreferrer" className="btn btn-warning btn-lg">Download CV</a>
         </div>
       </header>
 
@@ -134,7 +134,7 @@ function App() {
       <section className="section projects">
         <h2>Highlighted Projects</h2>
         <div className="projects-container">
-          {projects.map((p, i) => <ProjectCard key={i} project={p} delay={i * 0.8} />)}
+          {projects.map((p, i) => <ProjectCard key={i} project={p} delay={i * 3} />)}
         </div>
       </section>
 
