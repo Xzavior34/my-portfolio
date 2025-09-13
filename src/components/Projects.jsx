@@ -5,19 +5,19 @@ const projects = [
   {
     title: "Mini Jumia",
     desc: "E-commerce store with Firebase login, cart, and admin dashboard.",
-    img: "https://source.unsplash.com/400x300/?ecommerce",
+    img: "/mini-jumia.jpg", // <- local image in public folder
     link: "#",
   },
   {
     title: "Weather App",
     desc: "Real-time weather data with clean UI.",
-    img: "https://source.unsplash.com/400x300/?weather",
+    img: "/weather-app.jpg", // <- add this file to public
     link: "#",
   },
   {
     title: "Xzavior Chess",
     desc: "Online chess with AI and mobile support.",
-    img: "https://source.unsplash.com/400x300/?chess",
+    img: "/xzavior-chess.jpg", // <- add this file to public
     link: "#",
   },
 ];
