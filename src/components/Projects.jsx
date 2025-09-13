@@ -5,19 +5,19 @@ const projects = [
   {
     title: "Mini Jumia",
     desc: "E-commerce store with Firebase login, cart, and admin dashboard.",
-    img: "/mini-jumia.jpg", // <- local image in public folder
+    img: process.env.PUBLIC_URL + "/mini-jumia.jpg",
     link: "#",
   },
   {
     title: "Weather App",
     desc: "Real-time weather data with clean UI.",
-    img: "/weather-app.jpg", // <- add this file to public
+    img: process.env.PUBLIC_URL + "/weather-app.jpg",
     link: "#",
   },
   {
     title: "Xzavior Chess",
     desc: "Online chess with AI and mobile support.",
-    img: "/xzavior-chess.jpg", // <- add this file to public
+    img: process.env.PUBLIC_URL + "/xzavior-chess.jpg",
     link: "#",
   },
 ];
@@ -72,4 +72,4 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+      }
