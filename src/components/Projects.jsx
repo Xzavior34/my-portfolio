@@ -6,19 +6,19 @@ const projects = [
     title: "Mini Jumia",
     desc: "E-commerce store with Firebase login, cart, and admin dashboard.",
     img: process.env.PUBLIC_URL + "/mini-jumia.jpg",
-    link: "#",
+    link: "https://xzavior34.github.io/market/",
   },
   {
     title: "Weather App",
     desc: "Real-time weather data with clean UI.",
     img: process.env.PUBLIC_URL + "/weather-app.jpg",
-    link: "#",
+    link: "https://xzavior34.github.io/weather/",
   },
   {
     title: "Xzavior Chess",
     desc: "Online chess with AI and mobile support.",
     img: process.env.PUBLIC_URL + "/xzavior-chess.jpg",
-    link: "#",
+    link: "https://xzavior34.github.io/Chess-game-/",
   },
 ];
 
@@ -42,15 +42,17 @@ export default function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              className="rounded-xl bg-white/10 backdrop-blur-lg shadow-lg overflow-hidden hover:scale-105 hover:shadow-blue-500/40 transition-transform duration-300"
+              className="rounded-xl bg-white/10 backdrop-blur-lg shadow-lg overflow-hidden hover:scale-105 hover:shadow-blue-500/50 transition-transform duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.6 }}
             >
-              <img
+              <motion.img
                 src={project.img}
                 alt={project.title}
                 className="w-full h-48 object-cover"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
               />
               <div className="p-6">
                 <h3 className="text-2xl font-semibold mb-2 text-white">
@@ -61,7 +63,7 @@ export default function Projects() {
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 bg-blue-600/80 hover:bg-blue-700 text-white rounded-lg transition"
+                  className="px-4 py-2 bg-blue-600/70 hover:bg-blue-700/80 text-white rounded-lg backdrop-blur-sm transition-all duration-300"
                 >
                   View Project
                 </a>
@@ -72,4 +74,4 @@ export default function Projects() {
       </div>
     </section>
   );
-      }
+}
