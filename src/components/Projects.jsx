@@ -20,6 +20,12 @@ const projects = [
     img: process.env.PUBLIC_URL + "/xzavior-chess.jpg",
     link: "https://xzavior34.github.io/Chess-game-/",
   },
+  {
+    title: "Xzavior ChatAI",
+    desc: "Real-time AI chatbot with modern UI, WebSocket backend, and mobile-friendly design.",
+    img: process.env.PUBLIC_URL + "/chat.jpg", // <- put chat.jpg in public folder
+    link: "https://xzavior34.github.io/Xzavior-ai/",
+  },
 ];
 
 export default function Projects() {
