@@ -17,6 +17,7 @@ function App() {
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       
       <Hero darkMode={darkMode} />
+      <About darkMode={darkMode} />
       <Projects darkMode={darkMode} />
       <Skills darkMode={darkMode} />
       <Testimonials darkMode={darkMode} />
