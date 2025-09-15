@@ -3,6 +3,24 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "Xzavior Piano Tiles",
+    desc: "Fast-paced piano tile game with smooth controls and addictive gameplay.",
+    img: process.env.PUBLIC_URL + "/piano.jpg", // <- put piano.jpg in public folder
+    link: "https://xzavior34.github.io/X-piano-tiles/",
+  },
+  {
+    title: "Xzavior ChatAI",
+    desc: "Real-time AI chatbot with modern UI, WebSocket backend, and mobile-friendly design.",
+    img: process.env.PUBLIC_URL + "/chat.jpg", // <- put chat.jpg in public folder
+    link: "https://xzavior34.github.io/Xzavior-ai/",
+  },
+  {
+    title: "Xzavior Chess",
+    desc: "Online chess with AI and mobile support.",
+    img: process.env.PUBLIC_URL + "/xzavior-chess.jpg",
+    link: "https://xzavior34.github.io/Chess-game-/",
+  },
+  {
     title: "Mini Jumia",
     desc: "E-commerce store with Firebase login, cart, and admin dashboard.",
     img: process.env.PUBLIC_URL + "/mini-jumia.jpg",
@@ -13,18 +31,6 @@ const projects = [
     desc: "Real-time weather data with clean UI.",
     img: process.env.PUBLIC_URL + "/weather-app.jpg",
     link: "https://xzavior34.github.io/weather/",
-  },
-  {
-    title: "Xzavior Chess",
-    desc: "Online chess with AI and mobile support.",
-    img: process.env.PUBLIC_URL + "/xzavior-chess.jpg",
-    link: "https://xzavior34.github.io/Chess-game-/",
-  },
-  {
-    title: "Xzavior ChatAI",
-    desc: "Real-time AI chatbot with modern UI, WebSocket backend, and mobile-friendly design.",
-    img: process.env.PUBLIC_URL + "/chat.jpg", // <- put chat.jpg in public folder
-    link: "https://xzavior34.github.io/Xzavior-ai/",
   },
 ];
 
