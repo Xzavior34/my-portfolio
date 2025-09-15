@@ -1,5 +1,6 @@
 // src/App.js
 import React, { useState } from "react";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
