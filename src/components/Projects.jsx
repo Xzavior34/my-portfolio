@@ -5,13 +5,13 @@ const projects = [
   {
     title: "Xzavior Piano Tiles",
     desc: "Fast-paced piano tile game with smooth controls and addictive gameplay.",
-    img: process.env.PUBLIC_URL + "/piano.jpg", // <- put piano.jpg in public folder
+    img: process.env.PUBLIC_URL + "/piano.jpg",
     link: "https://xzavior34.github.io/X-piano-tiles/",
   },
   {
     title: "Xzavior ChatAI",
     desc: "Real-time AI chatbot with modern UI, WebSocket backend, and mobile-friendly design.",
-    img: process.env.PUBLIC_URL + "/chat.jpg", // <- put chat.jpg in public folder
+    img: process.env.PUBLIC_URL + "/chat.jpg",
     link: "https://xzavior34.github.io/Xzavior-ai/",
   },
   {
@@ -54,31 +54,38 @@ export default function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              className="rounded-xl bg-white/10 backdrop-blur-lg shadow-lg overflow-hidden hover:scale-105 hover:shadow-blue-500/50 transition-transform duration-300"
+              className="relative rounded-2xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-lg hover:shadow-yellow-400/40 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.6 }}
             >
+              {/* Project Image */}
               <motion.img
                 src={project.img}
                 alt={project.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-52 object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
               />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-2 text-white">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 mb-4">{project.desc}</p>
+
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-black/0 hover:bg-black/60 flex justify-center items-center opacity-0 hover:opacity-100 transition-all duration-300">
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 bg-blue-600/70 hover:bg-blue-700/80 text-white rounded-lg backdrop-blur-sm transition-all duration-300"
+                  className="px-4 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold hover:bg-yellow-500 transition"
                 >
                   View Project
                 </a>
+              </div>
+
+              {/* Project Details */}
+              <div className="p-6 relative z-10">
+                <h3 className="text-2xl font-semibold mb-2 text-white">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 mb-4">{project.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -86,4 +93,4 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+                           }
