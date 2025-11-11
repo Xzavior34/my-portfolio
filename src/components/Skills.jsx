@@ -1,13 +1,39 @@
 import React from "react";
-import { FaCode, FaPaintBrush, FaMobileAlt, FaCloud } from "react-icons/fa";
+import { Gauge, Zap, Database, Cloud, LayoutGrid, Layers, Code } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Skills() {
   const skills = [
-    { icon: <FaCode size={40} />, title: "Full-Stack Development", desc: "React, Node.js, Express, Firebase" },
-    { icon: <FaPaintBrush size={40} />, title: "UI/UX Design", desc: "Figma, Tailwind, Responsive Design" },
-    { icon: <FaMobileAlt size={40} />, title: "Mobile Friendly", desc: "Cross-platform & PWA Development" },
-    { icon: <FaCloud size={40} />, title: "Cloud & APIs", desc: "REST APIs, Firebase, Deployment" },
+    { 
+      icon: <Layers size={36} />, 
+      title: "Architecture & Scalability", 
+      desc: "Designing secure, modular, and fault-tolerant full-stack systems built for high traffic and long-term maintenance." 
+    },
+    { 
+      icon: <Zap size={36} />, 
+      title: "Performance Optimization", 
+      desc: "Specialized focus on algorithmic efficiency, low-latency processing, and optimizing mission-critical database queries." 
+    },
+    { 
+      icon: <Database size={36} />, 
+      title: "Data & Systems Integrity", 
+      desc: "Implementing secure data modeling, robust testing (unit/integration), and zero-downtime deployment strategies." 
+    },
+    { 
+      icon: <LayoutGrid size={36} />, 
+      title: "Front-End Engineering", 
+      desc: "Expertise in React/Tailwind/Framer Motion for high-fidelity UI/UX, accessibility, and fluid responsiveness." 
+    },
+    { 
+      icon: <Code size={36} />, 
+      title: "Core Languages", 
+      desc: "Mastery in JavaScript (ES6+), TypeScript, Python, and efficient database interaction (SQL/NoSQL)." 
+    },
+    { 
+      icon: <Cloud size={36} />, 
+      title: "Deployment & DevOps", 
+      desc: "Experience with containerization (Docker), CI/CD pipelines, and cloud platform services (Firebase, Vercel)." 
+    },
   ];
 
   // Framer motion variants for staggered entry
@@ -16,23 +42,34 @@ export default function Skills() {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6, type: "spring", stiffness: 100 },
+      transition: { delay: i * 0.1, duration: 0.5, type: "spring", stiffness: 80 },
     }),
   };
 
   return (
-    <section id="skills" className="py-16 bg-gradient-to-r from-black via-gray-900 to-blue-900 text-white">
-      <div className="max-w-6xl mx-auto px-4 text-center">
+    <section 
+      id="skills" 
+      className="py-20 bg-gradient-to-br from-white via-gray-50 to-blue-50"
+    >
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <motion.h2
-          className="text-4xl font-bold mb-12"
+          className="text-4xl font-extrabold mb-4 text-gray-900"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Skills
+          Technical Specialization
         </motion.h2>
+        <motion.p
+          className="text-xl text-gray-500 mb-16 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          My cumulative experience focuses on building performant, scalable, and resilient software across the entire stack.
+        </motion.p>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skill, i) => (
             <motion.div
               key={i}
@@ -40,15 +77,17 @@ export default function Skills() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              className="p-6 bg-white/10 rounded-2xl shadow-2xl hover:scale-105 hover:shadow-yellow-400/50 transition-transform duration-300"
+              viewport={{ once: true, amount: 0.3 }}
+              className="p-8 bg-white/70 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100/50 
+                         transition-all duration-300 transform hover:scale-[1.03] hover:shadow-blue-300/40 hover:border-blue-300/70"
             >
-              <div className="mb-4 text-yellow-400 flex justify-center">{skill.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-              <p className="text-gray-300">{skill.desc}</p>
+              <div className="mb-4 text-amber-500 flex justify-center">{skill.icon}</div>
+              <h3 className="text-2xl font-bold mb-3 text-blue-700">{skill.title}</h3>
+              <p className="text-gray-600">{skill.desc}</p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-    }
+}
