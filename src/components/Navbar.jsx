@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const Navigation = () => {
+const navItems = [
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Testimonials", href: "#testimonials" },
+  { name: "Contact", href: "#contact" },
+];
+
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollActive, setScrollActive] = useState(false);
-
-  const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +26,6 @@ const Navigation = () => {
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     const element = document.querySelector(href);
-    // Smooth scrolling logic that accounts for the sticky header height
     if (element) {
       window.scrollTo({
         top: element.offsetTop - (scrollActive ? 60 : 0),
@@ -37,17 +37,16 @@ const Navigation = () => {
 
   return (
     <motion.header
-      // High-end sticky effect using blur and white background
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrollActive ? "bg-white/90 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
+        scrollActive ? "bg-white/95 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, delay: 0.1 }}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo/Name - Uses Blue/Amber for professional branding */}
-        <a href="#hero" className="text-3xl font-black text-blue-800 tracking-tight">
+        {/* Logo/Name */}
+        <a href="#hero" className="text-3xl font-black text-blue-800 tracking-tight" onClick={(e) => handleLinkClick(e, '#hero')}>
           P.<span className="text-amber-500">I.</span>
         </a>
 
@@ -61,7 +60,6 @@ const Navigation = () => {
               className="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-200 relative group"
             >
               {item.name}
-              {/* Amber underline hover effect */}
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
             </a>
           ))}
@@ -76,7 +74,7 @@ const Navigation = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Panel - Glass effect and motion */}
+      {/* Mobile Menu Panel */}
       <motion.nav
         className="md:hidden bg-white/95 backdrop-blur-sm shadow-xl mt-4 mx-4 rounded-xl"
         initial={false}
@@ -103,6 +101,4 @@ const Navigation = () => {
       </motion.nav>
     </motion.header>
   );
-};
-
-export default Navigation;
+}
