@@ -1,61 +1,64 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Defensive definition to prevent ReferenceError in non-Node environments (like this runtime)
+const PUBLIC_URL = typeof process !== 'undefined' ? process.env.PUBLIC_URL : "";
+
+// NOTE: Using PUBLIC_URL + "/image.jpg" ensures paths are correct 
+// when deploying React applications to subfolders (like GitHub Pages).
 const projects = [
   {
     title: "Xzavior Piano Tiles",
     desc: "Fast-paced piano tile game with smooth controls and addictive gameplay.",
-    // FIXED: Removed process.env.PUBLIC_URL to resolve 'ReferenceError: process is not defined'
-    img: "/piano.jpg",
+    img:"/piano.jpg",
     link: "https://xzavior34.github.io/X-piano-tiles/",
   },
   {
     title: "Xzavior ChatAI",
     desc: "Real-time AI chatbot with modern UI, WebSocket backend, and mobile-friendly design.",
-    // FIXED: Removed process.env.PUBLIC_URL
     img: "/chat.jpg",
     link: "https://xzavior34.github.io/Xzavior-ai/",
   },
   {
     title: "Xzavior Chess",
     desc: "Online chess with AI and mobile support.",
-    // FIXED: Removed process.env.PUBLIC_URL
     img: "/xzavior-chess.jpg",
     link: "https://xzavior34.github.io/Chess-game-/",
   },
   {
-    title: "Mini Jumia",
+    title: "E-commerce store",
     desc: "E-commerce store with Firebase login, cart, and admin dashboard.",
-    // FIXED: Removed process.env.PUBLIC_URL
     img: "/mini-jumia.jpg",
     link: "https://xzavior34.github.io/market/",
   },
   {
-    title: "Weather App",
-    desc: "Real-time weather data with clean UI.",
-    // FIXED: Removed process.env.PUBLIC_URL
+    title: "Xza movies",
+    desc: "Real-time movie app that shows all movies and trends.",
     img: "/weather-app.jpg",
     link: "https://xzavior34.github.io/weather/",
   },
+    {
+    title: "Edufind",
+    desc: "Real-time app that gives u courses u searched for with ratings.",
+    img: "edufind.jpg",
+    link: "https://edufind.vercel.app/",
+  },
 ];
 
-export default function Projects() {
-  // Common motion properties for cards
-  const cardMotion = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  };
+const cardMotion = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+};
 
+export default function Projects() {
   return (
     <section
       id="projects"
-      // UPDATED: High-key, professional gradient background for depth
       className="py-24 bg-gradient-to-br from-white via-gray-50 to-blue-50 text-gray-800 font-inter"
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
         <motion.h2
-          // Header matching the style in About.jsx
           className="text-4xl lg:text-5xl font-extrabold mb-12 text-blue-900 border-b-4 border-blue-500 inline-block pb-1"
           {...cardMotion}
         >
@@ -81,7 +84,7 @@ export default function Projects() {
                 className="w-full h-52 object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
-                // Fallback for image loading
+                // Fallback using the same placeholder technique
                 onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/800x400/F9FAFB/111827?text=Project+Preview"; }}
               />
 
