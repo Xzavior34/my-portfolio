@@ -1,11 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
 
 export default function Testimonials() {
   const testimonials = [
-    { name: "Sara Foundation", text: "Philip transformed our digital presence with creativity and precision. His designs elevated our brand." },
-    { name: "Regamos Foundation", text: "Working with Philip was a joy. His professionalism and results-driven mindset made a huge impact." },
-    { name: "Tech Startup", text: "He built a seamless e-commerce platform that helped us grow rapidly. Truly a full-stack wizard!" },
+    {
+      name: "Senior PM, Springer Capital",
+      text: "Philip's work on low-latency architectures directly contributed to a 20% improvement in our transaction processing speed. His ability to deliver mission-critical microservice solutions is exceptional.",
+      role: "Quantitative Development Lead",
+    },
+    {
+      name: "Project Manager, Forage Program",
+      text: "He consistently demonstrated the capacity to transition complex business requirements into robust, full-stack applications, showing genuine technical leadership across the entire SDLC.",
+      role: "Software Engineering Mentor",
+    },
+    {
+      name: "Founder, Sara Foundation",
+      text: "Beyond development, Philip optimized our database queries and enhanced our API-driven performance, dramatically improving user stability and reducing operational latency.",
+      role: "Digital Transformation Officer",
+    },
   ];
 
   const cardVariants = {
@@ -13,27 +26,23 @@ export default function Testimonials() {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.3, duration: 0.6, type: "spring", stiffness: 100 },
+      transition: { delay: i * 0.2, duration: 0.6, type: "spring", stiffness: 100 },
     }),
   };
 
   return (
     <section
       id="testimonials"
-      className="py-20 bg-gradient-to-r from-[#0a1f44] via-[#0d1117] to-[#1e3a8a] relative overflow-hidden text-white"
+      className="py-20 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden text-gray-800"
     >
-      {/* Optional floating circles */}
-      <div className="absolute top-10 left-10 w-24 h-24 bg-yellow-400/20 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-32 h-32 bg-blue-400/20 rounded-full animate-pulse"></div>
-
       <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-white"
+          className="text-4xl font-extrabold mb-16 text-blue-900"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Testimonials
+          Endorsements on Impact
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -44,16 +53,28 @@ export default function Testimonials() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              className="p-6 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl hover:scale-105 hover:shadow-blue-400/50 transition-transform duration-300"
+              className="p-8 bg-white/70 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-blue-300/50 transition-all duration-300 border-b-4 border-blue-400/50 hover:scale-[1.02]"
             >
-              <p className="italic mb-4 text-gray-300 text-lg">“{t.text}”</p>
-              <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-400">
-                — {t.name}
-              </h3>
+              <div className="text-amber-500 mb-4 flex justify-center">
+                <Quote size={32} />
+              </div>
+
+              <p className="italic mb-6 text-gray-600 text-lg leading-relaxed">
+                “{t.text}”
+              </p>
+
+              <div className="text-center pt-4 border-t border-gray-200">
+                <h3 className="text-xl font-bold text-blue-800">
+                  {t.name}
+                </h3>
+                <p className="text-sm text-amber-500 font-medium mt-1">
+                  {t.role}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-        }
+}
