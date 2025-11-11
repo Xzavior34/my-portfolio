@@ -1,7 +1,7 @@
 // src/App.jsx
 
 import React from "react";
-import Navigation from "./components/Navigation"; // Assuming you renamed Navbar to Navigation
+import Navigation from "./components/Navbar"; // Assuming you renamed Navbar to Navigation
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
