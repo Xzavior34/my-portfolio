@@ -34,8 +34,8 @@ const projects = [
   {
     title: "Xza movies",
     desc: "Real-time movie app that shows all movies and trends.",
-    img: "/weather-app.jpg",
-    link: "https://xzavior34.github.io/weather/",
+    img: "/movie.jpg",
+    link: "https://xzavior34.github.io/Xzavior-movie/",
   },
     {
     title: "Edufind",
