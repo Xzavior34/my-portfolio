@@ -1,97 +1,108 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrollActive, setScrollActive] = useState(false);
+
+  const navItems = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrollActive(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = (e, targetId) => {
+  const handleLinkClick = (e, href) => {
     e.preventDefault();
-    const target = document.querySelector(targetId);
-    if (target) target.scrollIntoView({ behavior: "smooth" });
-    setOpen(false);
+    const element = document.querySelector(href);
+    // Smooth scrolling logic that accounts for the sticky header height
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - (scrollActive ? 60 : 0),
+        behavior: "smooth",
+      });
+    }
+    setIsOpen(false);
   };
 
-  const navLinks = [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
-
   return (
-    <nav
-      className={`fixed w-full z-50 top-0 transition-all duration-500 ${
-        scrolled
-          ? "bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-blue-900/90 backdrop-blur-md shadow-xl"
-          : "bg-transparent"
+    <motion.header
+      // High-end sticky effect using blur and white background
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrollActive ? "bg-white/90 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-5"
       }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.1 }}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center p-4 md:px-8">
-        {/* Logo */}
-        <div className="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-400 bg-clip-text text-transparent animate-text">
-          Philip Inem
-        </div>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo/Name - Uses Blue/Amber for professional branding */}
+        <a href="#hero" className="text-3xl font-black text-blue-800 tracking-tight">
+          P.<span className="text-amber-500">I.</span>
+        </a>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex space-x-8 text-white font-medium">
-          {navLinks.map((link, i) => (
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-6">
+          {navItems.map((item) => (
             <a
-              key={i}
-              href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className="relative group transition-all duration-300 hover:text-yellow-400"
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleLinkClick(e, item.href)}
+              className="text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-200 relative group"
             >
-              {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all group-hover:w-full"></span>
+              {item.name}
+              {/* Amber underline hover effect */}
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-800 p-2 rounded-lg hover:bg-gray-100 transition"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Panel - Glass effect and motion */}
+      <motion.nav
+        className="md:hidden bg-white/95 backdrop-blur-sm shadow-xl mt-4 mx-4 rounded-xl"
+        initial={false}
+        animate={isOpen ? "open" : "closed"}
+        variants={{
+          open: { height: "auto", opacity: 1 },
+          closed: { height: 0, opacity: 0.8 },
+        }}
+        transition={{ duration: 0.4 }}
+        style={{ overflow: "hidden" }}
+      >
+        <div className="flex flex-col p-4 space-y-2">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleLinkClick(e, item.href)}
+              className="text-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-gray-50 p-3 rounded-lg transition"
+            >
+              {item.name}
             </a>
           ))}
         </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            className="text-white text-3xl focus:outline-none"
-          >
-            {open ? "✖" : "☰"}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Links */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-gradient-to-r from-blue-900/95 via-blue-800/70 to-blue-900/95 backdrop-blur-md shadow-xl flex flex-col items-center space-y-6 py-6 text-white font-medium overflow-hidden"
-          >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={i}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className="text-lg hover:text-yellow-400 transition-colors duration-300"
-              >
-                {link.label}
-              </motion.a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+      </motion.nav>
+    </motion.header>
   );
-                         }
+};
+
+export default Navigation;
