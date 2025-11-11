@@ -10,31 +10,31 @@ const projects = [
   {
     title: "Xzavior Piano Tiles",
     desc: "Fast-paced piano tile game with smooth controls and addictive gameplay.",
-    img:"/piano.jpg",
+    img:"piano.jpg",
     link: "https://xzavior34.github.io/X-piano-tiles/",
   },
   {
     title: "Xzavior ChatAI",
     desc: "Real-time AI chatbot with modern UI, WebSocket backend, and mobile-friendly design.",
-    img: "/chat.jpg",
+    img: "chat.jpg",
     link: "https://xzavior34.github.io/Xzavior-ai/",
   },
   {
     title: "Xzavior Chess",
     desc: "Online chess with AI and mobile support.",
-    img: "/xzavior-chess.jpg",
+    img: "xzavior-chess.jpg",
     link: "https://xzavior34.github.io/Chess-game-/",
   },
   {
     title: "E-commerce store",
     desc: "E-commerce store with Firebase login, cart, and admin dashboard.",
-    img: "/mini-jumia.jpg",
+    img: "mini-jumia.jpg",
     link: "https://xzavior34.github.io/market/",
   },
   {
     title: "Xza movies",
     desc: "Real-time movie app that shows all movies and trends.",
-    img: "/movie.jpg",
+    img: "movie.jpg",
     link: "https://xzavior34.github.io/Xzavior-movie/",
   },
     {
