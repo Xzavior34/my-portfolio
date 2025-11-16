@@ -4,12 +4,12 @@ import { Mail, Github, Download, ArrowRight } from 'lucide-react';
 
 export default function Hero() {
 
-  // --- FIX APPLIED ---
-  // Using the same PUBLIC_URL logic from your Projects.js file for consistency.
+  // Using the same PUBLIC_URL logic from your Projects.js file
   const PUBLIC_URL = typeof process !== 'undefined' && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "";
   
-  // This path is now constructed using the PUBLIC_URL variable.
-  const heroBackgroundImagePath = PUBLIC_URL + "/1000597015.jpg"; 
+  // --- FIX APPLIED ---
+  // The filename has been changed to "pic.jpg" as requested.
+  const heroBackgroundImagePath = PUBLIC_URL + "/pic.jpg"; 
   // --- END OF FIX ---
 
   const containerVariants = {
@@ -34,7 +34,7 @@ export default function Hero() {
       id="hero"
       className="relative h-screen flex items-center justify-center text-white overflow-hidden"
       style={{
-        // Now using the variable
+        // This will now look for "/pic.jpg"
         backgroundImage: `url(${heroBackgroundImagePath})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -136,4 +136,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
