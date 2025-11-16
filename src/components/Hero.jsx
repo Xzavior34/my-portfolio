@@ -1,154 +1,134 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Download } from 'lucide-react'; 
+import { Mail, Github, Download, ArrowRight } from 'lucide-react'; 
 
 export default function Hero() {
-  // Component for ambient background movement (light and soft)
-  const DynamicBackground = () => (
-    <div className="absolute inset-0 z-0 overflow-hidden" style={{
-      // Soft, light gradient background
-      background: 'radial-gradient(circle at 100% 100%, #f0f8ff, #ffffff 40%, #e6f0ff)',
-    }}>
-      {/* Visual elements to create soft, moving color effect */}
-      <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-blue-300/10 rounded-full animate-float-slow filter blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-amber-300/10 rounded-full animate-float-medium filter blur-3xl"></div>
-      <div className="absolute top-20 right-10 w-32 h-32 bg-blue-400/10 rounded-full animate-float-fast filter blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-amber-400/10 rounded-full animate-float-slow filter blur-3xl"></div>
-    </div>
-  );
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: (i = 1) => ({
+  // Define PUBLIC_URL defensively for local execution testing
+  const PUBLIC_URL = typeof process !== 'undefined' && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "";
+  // Using the path for the uploaded image and ensuring GitHub Pages compatibility
+  const heroBackgroundImagePath = PUBLIC_URL + "/1000597015.jpg"; 
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { delay: i * 0.3, duration: 0.8, ease: "easeOut" },
-    }),
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
   };
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+  
   return (
     <section
       id="hero"
-      className="relative h-[95vh] flex flex-col justify-center items-center text-center text-gray-800 overflow-hidden font-inter"
+      className="relative h-screen flex items-center justify-center text-gray-900 overflow-hidden"
+      style={{
+        backgroundImage: `url(${heroBackgroundImagePath})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
     >
-      <DynamicBackground />
-      
-      {/* Hero Content Card - Opaque/Glass Light Mode */}
+      {/* Dark Overlay for contrast (like in the image) */}
+      <div className="absolute inset-0 bg-black bg-opacity-70 z-0"></div> 
+
+      {/* Hero Content - Split Layout */}
       <motion.div
-        className="relative z-10 px-6 max-w-5xl w-full backdrop-blur-md bg-white/90 border border-gray-200 rounded-3xl p-10 md:p-16 
-                   flex flex-col items-center shadow-2xl shadow-blue-200/50"
+        className="relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between w-full max-w-7xl mx-auto px-6 gap-12"
+        variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Name - Massive and GOLDEN/AMBER for primary focus */}
-        <motion.h1
-          className="text-7xl lg:text-8xl font-black mb-4 text-amber-600 whitespace-nowrap overflow-hidden pr-1"
-          custom={1}
-          variants={textVariants}
-        >
-          <span className="inline-block animate-typing">Philip Inem</span>
-        </motion.h1>
-
-        {/* Professional Tagline - Clearer delineation, using Full-Stack */}
-        <motion.div
-          className="mb-12"
-          custom={2}
-          variants={textVariants}
-        >
-            <p className="text-2xl md:text-4xl text-gray-900 font-bold tracking-wide border-b-2 border-blue-500 pb-1">
-              Full-Stack Developer
-            </p>
-            <p className="text-xl md:text-2xl text-gray-600 mt-2 tracking-widest uppercase">
-              UI/UX Architect | FinTech Specialist
-            </p>
-        </motion.div>
-
-        <motion.div
-          className="flex flex-col sm:flex-row justify-center gap-4 md:gap-8 flex-wrap"
-          custom={3}
-          variants={textVariants}
-        >
-          {/* Button 1: Download CV (Primary - Filled Amber) */}
-          <a
-            href="Philip_Inem_CV_Summary.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center px-10 py-4 bg-amber-500 text-gray-900 rounded-xl font-bold text-lg tracking-wide shadow-xl shadow-amber-300/50 hover:bg-amber-600 hover:scale-[1.05] transition-transform duration-300"
+        {/* --- Left Column (Text Content - Aligned Left) --- */}
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pt-20 lg:pt-0">
+          
+          <motion.p 
+            className="text-xl md:text-2xl font-medium mb-2 text-blue-300"
+            variants={itemVariants}
           >
-            <Download className="w-5 h-5 mr-3"/> Download CV
-          </a>
-          {/* Button 2: Email Me (Secondary - Filled Blue) */}
-          <a
-            href="mailto:philipinem7@gmail.com"
-            className="flex items-center px-10 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg tracking-wide shadow-xl shadow-blue-400/50 hover:bg-blue-700 hover:scale-[1.05] transition-transform duration-300"
+            Hi, I am
+          </motion.p>
+          
+          <motion.h1
+            className="text-5xl md:text-7xl font-black mb-2 leading-tight text-white" 
+            variants={itemVariants}
           >
-            <Mail className="w-5 h-5 mr-3"/> Email Me
-          </a>
-          {/* Button 3: GitHub (Tertiary - Outlined Blue) */}
-          <a
-            href="https://github.com/Xzavior34"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center px-10 py-4 bg-transparent border-2 border-blue-500 text-blue-600 rounded-xl font-bold text-lg tracking-wide hover:bg-blue-50 hover:scale-[1.05] transition-transform duration-300"
-          >
-            <Github className="w-5 h-5 mr-3"/> GitHub
-          </a>
-        </motion.div>
+            <span className="text-amber-400">Philip</span> Inem
+          </motion.h1>
 
-        {/* Scroll hint */}
-        <motion.div
-          className="mt-20 text-gray-400 text-5xl animate-bounce"
-          custom={4}
-          variants={textVariants}
-        >
-          ↓
-        </motion.div>
+          <motion.p
+            className="text-2xl md:text-4xl text-gray-200 font-semibold mb-6 tracking-wide"
+            variants={itemVariants}
+          >
+            Full-Stack Developer | UI/UX Architect
+          </motion.p>
+
+          <motion.p 
+            className="text-md md:text-lg text-gray-300 max-w-lg mb-8 leading-relaxed"
+            variants={itemVariants}
+          >
+            I specialize in engineering <span className="font-semibold text-blue-200">high-performance, full-stack architectures</span>. My focus lies in delivering <span className="font-semibold text-amber-300">low-latency solutions</span> and exceptional user experiences, translating complex requirements into reliable, scalable code.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-8"
+            variants={itemVariants}
+          >
+            {/* Button 1: Hire Me (Primary CTA) */}
+            <a
+              href="#contact" 
+              className="flex items-center justify-center px-8 py-3 bg-amber-500 text-gray-900 rounded-lg font-bold text-lg shadow-xl shadow-amber-300/30 hover:bg-amber-600 hover:scale-[1.05] transition-transform duration-300"
+            >
+              Hire Me <ArrowRight className="w-5 h-5 ml-2"/>
+            </a>
+            
+            {/* Button 2: Let's Talk (Secondary CTA) */}
+            <a
+              href="#contact" // Links to contact section
+              className="flex items-center justify-center px-8 py-3 bg-blue-600 text-white rounded-lg font-bold text-lg shadow-xl shadow-blue-400/30 hover:bg-blue-700 hover:scale-[1.05] transition-transform duration-300"
+            >
+              <Mail className="w-5 h-5 mr-3"/> Let's Talk
+            </a>
+          </motion.div>
+
+          {/* Socials & CV Links */}
+          <motion.div 
+            className="flex items-center justify-center lg:justify-start gap-8 mt-4"
+            variants={itemVariants}
+          >
+            <a 
+              href="Philip_Inem_CV_Summary.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-gray-300 hover:text-blue-300 transition-colors" 
+            >
+              <Download className="w-5 h-5" /> Download CV
+            </a>
+            <a 
+              href="https://github.com/Xzavior34"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-300 hover:text-blue-300 transition-colors" 
+            >
+              <Github className="w-6 h-6" />
+            </a>
+          </motion.div>
+
+        </div>
+
+        {/* --- Right Column (Visual placeholder removed to let BG image dominate) --- */}
+        <div className="flex-1 hidden lg:block">
+          {/* Empty to push content left */}
+        </div>
       </motion.div>
-
-      {/* CSS Animations */}
-      <style>
-        {`
-          /* Floating Shapes */
-          @keyframes float-slow {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(50px, -50px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes float-medium {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(-80px, 80px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes float-fast {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(100px, 0); }
-            100% { transform: translate(0, 0); }
-          }
-          .animate-float-slow { animation: float-slow 20s infinite ease-in-out; }
-          .animate-float-medium { animation: float-medium 15s infinite alternate; }
-          .animate-float-fast { animation: float-fast 12s infinite ease; }
-
-
-          /* Typing animation */
-          .animate-typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 2.5s steps(15, end), blink-caret 0.75s step-end infinite;
-          }
-
-          @keyframes typing {
-            from { width: 0 }
-            to { width: 15ch }
-          }
-
-          @keyframes blink-caret {
-            0%, 100% { border-color: transparent; }
-            50% { border-color: #f59e0b; /* Amber-500 */ }
-          }
-        `}
-      </style>
     </section>
   );
 }
