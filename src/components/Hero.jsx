@@ -4,9 +4,9 @@ import { Mail, Github, Download, ArrowRight } from 'lucide-react';
 
 export default function Hero() {
 
-  // Define PUBLIC_URL defensively for local execution testing
   const PUBLIC_URL = typeof process !== 'undefined' && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "";
-  // Using the path for the uploaded image and ensuring GitHub Pages compatibility
+  
+  // This path is now correct, assuming the file is in /public/1000597015.jpg
   const heroBackgroundImagePath = PUBLIC_URL + "/1000597015.jpg"; 
 
   const containerVariants = {
@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative h-screen flex items-center justify-center text-gray-900 overflow-hidden"
+      className="relative h-screen flex items-center justify-center text-white overflow-hidden" // Changed to text-white
       style={{
         backgroundImage: `url(${heroBackgroundImagePath})`,
         backgroundSize: 'cover',
