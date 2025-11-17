@@ -7,8 +7,8 @@ export default function Hero() {
   // --- FIX: Using the simple path logic that works for you ---
   // This assumes 'pic.jpg' and 'Philip_Inem_CV_Summary.pdf'
   // are both in your 'public' folder.
-  const heroBackgroundImagePath = "/pic.jpg"; 
-  const cvPath = "/Philip_Inem_CV_Summary.pdf";
+  const heroBackgroundImagePath = "pic.jpg"; 
+  const cvPath = "Philip_Inem_CV_Summary.pdf";
 
   const containerVariants = {
     hidden: { opacity: 0 },
