@@ -49,7 +49,7 @@ export default function Contact() {
 
   const buttonData = [
     { label: "Email Me", href: "mailto:philipinem7@gmail.com", icon: <Mail size={24} />, style: "primary" },
-    { label: "LinkedIn", href: "", icon: <Linkedin size={24} />, style: "secondary" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/philip-inem-9b690536b", icon: <Linkedin size={24} />, style: "secondary" },
     { label: "GitHub", href: "https://www.linkedin.com/in/philip-inem-9b690536b?utm_source=share_via&utm_content=profile&utm_medium=member_android//github.com/Xzavior34", icon: <Github size={24} />, style: "tertiary" },
     { label: "Download CV", href: "Philip_Inem_CV_Summary.pdf", icon: <Download size={24} />, style: "quaternary" },
   ];
