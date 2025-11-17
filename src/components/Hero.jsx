@@ -1,33 +1,14 @@
-import React, { useEffect, useState } from 'react'; // Import useEffect and useState
+import React from 'react'; // <-- No more useEffect/useState
 import { motion } from 'framer-motion';
 import { Mail, Github, Download, ArrowRight } from 'lucide-react'; 
 
 export default function Hero() {
 
-  const PUBLIC_URL = typeof process !== 'undefined' && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "";
-  
-  // --- FIX 1: Correctly define paths for BOTH files in 'public' folder ---
-  const heroBackgroundImagePath = PUBLIC_URL + "/pic.jpg"; 
-  const cvPath = PUBLIC_URL + "/Philip_Inem_CV_Summary.pdf"; // Correct path for CV
-
-  // --- FIX 2: Add state to track if image has loaded ---
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  // --- FIX 2 (Continued): UseEffect to load image and add error handling ---
-  useEffect(() => {
-    const img = new Image();
-    img.src = heroBackgroundImagePath;
-    
-    // Image loaded successfully
-    img.onload = () => setIsImageLoaded(true);
-    
-    // Image failed to load (e.g., 404 Not Found)
-    img.onerror = () => {
-      console.error(`Error: Background image failed to load from: ${heroBackgroundImagePath}. 
-      Please make sure 'pic.jpg' is in your 'public' folder.`);
-      setIsImageLoaded(false);
-    };
-  }, [heroBackgroundImagePath]); // Re-run if the path ever changes
+  // --- FIX: Using the simple path logic that works for you ---
+  // This assumes 'pic.jpg' and 'Philip_Inem_CV_Summary.pdf'
+  // are both in your 'public' folder.
+  const heroBackgroundImagePath = "/pic.jpg"; 
+  const cvPath = "/Philip_Inem_CV_Summary.pdf";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,15 +30,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      // --- FIX 1 (Continued): Added bg-gray-100 as a fallback ---
-      // This fallback background will show if the image fails to load.
-      className="relative h-screen flex items-center justify-center text-gray-800 overflow-hidden bg-gray-100" 
+      // --- Removed the fallback bg-gray-100 ---
+      className="relative h-screen flex items-center justify-center text-gray-800 overflow-hidden" 
       style={{
-        // --- FIX 2 (Continued): Only apply background image if it loaded successfully ---
-        backgroundImage: isImageLoaded ? `url(${heroBackgroundImagePath})` : 'none',
+        // --- Set the background image directly, just like your Projects logic ---
+        backgroundImage: `url(${heroBackgroundImagePath})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        transition: 'background-image 0.3s ease-in-out', // Optional: nice fade-in
       }}
     >
       {/* Hero Content - Split Layout */}
@@ -126,7 +105,7 @@ export default function Hero() {
             variants={itemVariants}
           >
             <a 
-              // --- FIX 3: Use the correct cvPath variable ---
+              // --- Use the direct path variable ---
               href={cvPath}
               target="_blank"
               rel="noreferrer"
